@@ -69,7 +69,7 @@ progress {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 .button-play, .button-pause {
