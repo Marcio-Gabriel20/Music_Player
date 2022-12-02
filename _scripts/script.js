@@ -1,40 +1,56 @@
-let musics = [
-    {
-        title: 'It Was a Time',
-        artist: 'TrackTribe',
-        src: '../_musics/It Was a Time - TrackTribe.mp3',
-        img: '../_imgs/rock.jpg'
-    },
-
-    {
-        title: 'Slipping Away',
-        artist: 'Dyalla',
-        src: '../_musics/Slipping Away - Dyalla.mp3',
-        img: '../_imgs/hip_hop.jpg'
-    },
-
-    {
-        title: 'Ceremonial Library',
-        artist: 'Asher Fulero',
-        src: '../_musics/Ceremonial Library - Asher Fulero.mp3',
-        img: '../_imgs/classic.jpg'
-    }
-];
-
 let music = document.querySelector('audio');
+let indexMusic = 0;
 
 let musicDuration = document.querySelector('.end');
 let image = document.querySelector('img');
 let nameMusic = document.querySelector('.description h2');
-let artistName = document.querySelector('.description i');
+let nameArtist = document.querySelector('.description i');
 
-musicDuration.textContent = secondsToMinutes(Math.floor(music.duration));
+renderMusic(indexMusic);
+
+// Eventos
 
 document.querySelector('.button-play').addEventListener('click', playMusic); // playMusic -> função para tocar a música
 
 document.querySelector('.button-pause').addEventListener('click', stopMusic);
 
 music.addEventListener('timeupdate', refreshBar); // timeupdate -> evento que verifica se a música está tocando
+
+document.querySelector('.previous').addEventListener('click', () => {
+    indexMusic--;
+
+    if(indexMusic < 0) {
+        indexMusic = 2;
+    }
+
+    renderMusic(indexMusic);
+
+    playMusic();
+});
+
+document.querySelector('.next').addEventListener('click', () => {
+    indexMusic++;
+
+    if(indexMusic > 2) {
+        indexMusic = 0;
+    }
+
+    renderMusic(indexMusic);
+
+    playMusic();
+});
+
+// Funções
+
+function renderMusic(index) {
+    music.setAttribute('src', musics[index].src);
+    music.addEventListener('loadeddata', () => {
+        nameMusic.textContent = musics[index].title;
+        nameArtist.textContent = musics[index].artist;
+        image.src = musics[index].img;
+        musicDuration.textContent = secondsToMinutes(Math.floor(music.duration));
+    });
+}
 
 function playMusic() {
     music.play();
@@ -66,4 +82,3 @@ function secondsToMinutes(seconds) {
 
     return minutesField + ':' + secondsField;
 }
-
