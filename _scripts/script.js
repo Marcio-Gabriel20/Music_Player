@@ -14,6 +14,10 @@ document.querySelector('.button-play').addEventListener('click', playMusic); // 
 
 document.querySelector('.button-pause').addEventListener('click', stopMusic);
 
+document.querySelector('.random').addEventListener('click', random);
+
+document.querySelector('.repeat').addEventListener('click', repeat);
+
 music.addEventListener('timeupdate', refreshBar); // timeupdate -> evento que verifica se a música está tocando
 
 document.querySelector('.previous').addEventListener('click', () => {
@@ -62,6 +66,23 @@ function stopMusic() {
     music.pause();
     document.querySelector('.button-pause').style.display = 'none';
     document.querySelector('.button-play').style.display = 'block';
+}
+
+function changeColor(div) {
+    div.style.backgroundColor = 'rgb(99, 94, 94)';
+    div.style.borderRadius = '50%';
+}
+
+function random() {
+    let divRandom = document.querySelector('.random');
+
+    changeColor(divRandom);
+}
+
+function repeat() {
+    let divRepeat = document.querySelector('.repeat');
+
+    changeColor(divRepeat);
 }
 
 function refreshBar() {
