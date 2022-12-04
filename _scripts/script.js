@@ -68,23 +68,6 @@ function stopMusic() {
     document.querySelector('.button-play').style.display = 'block';
 }
 
-function changeColor(div) {
-    div.style.backgroundColor = 'rgb(99, 94, 94)';
-    div.style.borderRadius = '50%';
-}
-
-function random() {
-    let divRandom = document.querySelector('.random');
-
-    changeColor(divRandom);
-}
-
-function repeat() {
-    let divRepeat = document.querySelector('.repeat');
-
-    changeColor(divRepeat);
-}
-
 function refreshBar() {
     const bar = document.querySelector('progress');
     bar.style.width = Math.floor((music.currentTime / music.duration) * 100) + '%'; // dividindo a duração da música pelo tempo atual em que ela está e multiplicando por 100 para obter a porcentagem disso
