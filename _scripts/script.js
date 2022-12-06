@@ -14,10 +14,6 @@ document.querySelector('.button-play').addEventListener('click', playMusic); // 
 
 document.querySelector('.button-pause').addEventListener('click', stopMusic);
 
-document.querySelector('.random').addEventListener('click', random);
-
-document.querySelector('.repeat').addEventListener('click', repeat);
-
 music.addEventListener('timeupdate', refreshBar); // timeupdate -> evento que verifica se a música está tocando
 
 document.querySelector('.previous').addEventListener('click', () => {
